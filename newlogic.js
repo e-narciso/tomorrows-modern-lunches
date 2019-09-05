@@ -218,6 +218,8 @@ function initiatePrep() {
   // console.log(selectedMeal, selectedRate);
 }
 
+const star = './resources/biggerstar.png'
+
 function makeMeal(){
   let selectedMeal =
   selectedIngredientA.data[
@@ -229,13 +231,30 @@ function makeMeal(){
   ];
   let selectedRate = selectedIngredientA.rate + selectedIngredientB.rate;
   let mealName = document.querySelector("#exampleModalLongTitle");
-  let mealRate = document.querySelector("#myModal > div > div > div.modal-body");
+  let mealRate = document.getElementById("rating");
   mealName.innerHTML = selectedMeal;
-  mealRate.innerHTML = selectedRate;
+  // mealRate.innerHTML = selectedRate;
+  generateStars(mealRate, selectedRate);
+}
+
+function generateStars(element, amount) { // I need to fix this function. Something is wrong.
+  for(i = 0; i < amount; i++) {
+    var stars = document.createElement("img");
+    stars.src = star;
+    stars.classList.add('make-smaller');
+    element.appendChild(stars);
+  }
 }
 
 function nextRound(){
-  
+  let nextButton = document.getElementById("next");
+  nextButton.addEventListener('click', update);
+  function update(){
+    document.getElementById('myModal').modal('hide');
+    print(ingredientsA, ingredientsB);
+    chooseIngredientA(this.initiatePrep);
+    chooseIngredientB(this.initiatePrep);
+  }
 }
 
 window.onload = function() {

@@ -26,7 +26,7 @@ body{
   .ingredient.highlight {
     border: 5px solid transparent; /*rgba(0,200,0,.5);*/
     background: linear-gradient(rgb(209, 255, 209), rgb(209, 255, 209)) padding-box,
-	            repeating-linear-gradient(-45deg, rgb(12, 168, 25) 0, rgb(12, 168, 25) 25%, transparent 0, transparent 50%) 0 / .6em .6em;
+	            repeating-linear-gradient(-45deg, rgb(25, 133, 34) 0, rgb(25, 133, 34) 25%, transparent 0, transparent 50%) 0 / .8em .8em;
 	animation: ants 12s linear infinite;
 	
 	max-width: 20em;
@@ -61,5 +61,16 @@ body{
      padding-top: 80px;
  }
 
+.make-smaller{
+  max-width: 50px;
+}
 
- 
+.meal-image{
+  display: relative;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 200px;
+  width: 400px;
+  border: 1px solid red;
+}
