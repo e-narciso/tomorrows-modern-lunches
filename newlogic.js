@@ -206,6 +206,7 @@ function test(){
 }
 
 function initiatePrep() {
+  if(selectionArr.length < 2) {return};
   if (selectionArr.length == 2) {
     replace();
     console.log("here");
