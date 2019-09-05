@@ -14,8 +14,15 @@
     padding: 8px;
     border: 1px solid grey;
   }
+
+  .ingredient:hover {
+    border: 5px dashed rgba(0,0,255,.4);
+  }
+  .ingredient.highlight {
+    border: 5px solid rgba(0,200,0,.5);
+  }
   
-  img {
+  .robot {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -40,3 +47,6 @@
  h1 {
      padding-top: 80px;
  }
+
+
+ 
