@@ -63,6 +63,7 @@ let ingredient6 = document.getElementById("ingredient6");
 let ingredient7 = document.getElementById("ingredient7");
 let ingredient8 = document.getElementById("ingredient8");
 let selectedIngredientA, selectedIngredientB;
+let selectionArr = [];
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -160,6 +161,7 @@ function chooseIngredientA() {
       ingArr1[i].removeEventListener("click", display);
     }
     console.log(selectedIngredientA);
+    selectionArr.push(selectedIngredientA);
   }
 }
 function chooseIngredientB() {
@@ -184,10 +186,12 @@ function chooseIngredientB() {
     for (var i = 0; i < ingArr2.length; i++) {
       ingArr2[i].removeEventListener("click", display);
     }
-    console.log(selectedIngredientB);
-  }
-  if(selectedIngredientA && selectedIngredientB){
-      console.log('here');
+    selectionArr.push(selectedIngredientB);
+    console.log(selectedIngredientB, selectionArr);
+    if (selectionArr.length == 2) {
+      console.log("here");
+      initiatePrep();
+    }
   }
 }
 function initiatePrep() {
