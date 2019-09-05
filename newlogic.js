@@ -52,8 +52,6 @@ const ingredientsB = [
   }
 ];
 
-document.querySelector("#ingredient1");
-
 let ingredient1 = document.getElementById("ingredient1");
 let ingredient2 = document.getElementById("ingredient2");
 let ingredient3 = document.getElementById("ingredient3");
@@ -201,28 +199,40 @@ function chooseIngredientB(callback) {
   }
 }
 
-function test(){
-  if(selectionArr.length == 2){ console.log(true) };
-}
-
 function initiatePrep() {
   if(selectionArr.length < 2) {return};
   if (selectionArr.length == 2) {
     replace();
     console.log("here");
   }
-  let selectedMeal =
-    selectedIngredientA.data[
-      Math.floor(Math.random() * selectedIngredientA.data.length)
-    ] +
-    " " +
-    selectedIngredientB.data[
-      Math.floor(Math.random() * selectedIngredientB.data.length)
-    ];
-  let selectedRate = selectedIngredientA.rate + selectedIngredientB.rate;
-  console.log(selectedMeal, selectedRate);
+  // let selectedMeal =
+  //   selectedIngredientA.data[
+  //     Math.floor(Math.random() * selectedIngredientA.data.length)
+  //   ] +
+  //   " " +
+  //   selectedIngredientB.data[
+  //     Math.floor(Math.random() * selectedIngredientB.data.length)
+  //   ];
+  // let selectedRate = selectedIngredientA.rate + selectedIngredientB.rate;
+  makeMeal();
+  // console.log(selectedMeal, selectedRate);
 }
-// function makeMeal() {}
+
+function makeMeal(){
+  let selectedMeal =
+  selectedIngredientA.data[
+    Math.floor(Math.random() * selectedIngredientA.data.length)
+  ] +
+  " " +
+  selectedIngredientB.data[
+    Math.floor(Math.random() * selectedIngredientB.data.length)
+  ];
+  let selectedRate = selectedIngredientA.rate + selectedIngredientB.rate;
+  let mealRate = document.querySelector("#myModal > div > div > div.modal-body");
+  let mealName = document.querySelector("#exampleModalLongTitle");
+  mealName.innerHTML = selectedMeal;
+  mealRate.innerHTML = selectedRate;
+}
 
 window.onload = function() {
   print(ingredientsA, ingredientsB);
