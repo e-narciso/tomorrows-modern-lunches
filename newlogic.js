@@ -63,7 +63,7 @@ let ingredient6 = document.getElementById("ingredient6");
 let ingredient7 = document.getElementById("ingredient7");
 let ingredient8 = document.getElementById("ingredient8");
 let selectedIngredientA, selectedIngredientB;
-let selectionArr = [];
+const selectionArr = [];
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -138,7 +138,7 @@ function success(starredMeals) {
   }
 }
 
-function chooseIngredientA() {
+function chooseIngredientA(callback) {
   let ingArr1 = document.querySelectorAll("div.left");
 
   for (let i = 0; i < ingArr1.length; i++) {
@@ -162,9 +162,18 @@ function chooseIngredientA() {
     }
     console.log(selectedIngredientA);
     selectionArr.push(selectedIngredientA);
+    initiatePrep();
   }
 }
-function chooseIngredientB() {
+
+let modalButton = document.querySelector("#thing");
+
+function replace(){
+  modalButton.classList.remove('invisible');
+  modalButton.classList.add('visible');
+}
+
+function chooseIngredientB(callback) {
   let ingArr2 = document.querySelectorAll("div.right");
 
   for (let i = 0; i < ingArr2.length; i++) {
@@ -188,13 +197,19 @@ function chooseIngredientB() {
     }
     selectionArr.push(selectedIngredientB);
     console.log(selectedIngredientB, selectionArr);
-    if (selectionArr.length == 2) {
-      console.log("here");
-      initiatePrep();
-    }
+    initiatePrep();
   }
 }
+
+function test(){
+  if(selectionArr.length == 2){ console.log(true) };
+}
+
 function initiatePrep() {
+  if (selectionArr.length == 2) {
+    replace();
+    console.log("here");
+  }
   let selectedMeal =
     selectedIngredientA.data[
       Math.floor(Math.random() * selectedIngredientA.data.length)
@@ -210,7 +225,6 @@ function initiatePrep() {
 
 window.onload = function() {
   print(ingredientsA, ingredientsB);
-  chooseIngredientA();
-  chooseIngredientB();
-  document.getElementById("thing").style.color = "red";
+  chooseIngredientA(this.initiatePrep);
+  chooseIngredientB(this.initiatePrep);
 };
