@@ -228,10 +228,14 @@ function makeMeal(){
     Math.floor(Math.random() * selectedIngredientB.data.length)
   ];
   let selectedRate = selectedIngredientA.rate + selectedIngredientB.rate;
-  let mealRate = document.querySelector("#myModal > div > div > div.modal-body");
   let mealName = document.querySelector("#exampleModalLongTitle");
+  let mealRate = document.querySelector("#myModal > div > div > div.modal-body");
   mealName.innerHTML = selectedMeal;
   mealRate.innerHTML = selectedRate;
+}
+
+function nextRound(){
+  
 }
 
 window.onload = function() {
