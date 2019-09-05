@@ -71,8 +71,6 @@ function shuffleArray(array) {
   return array;
 }
 
-//let dubious = 'https://gamepedia.cursecdn.com/zelda_gamepedia_en/6/63/BotW_Dubious_Food_Icon.png?version=a078a61c16e4a5fc2bc8f87f0da68135';
-
 function print(arr1, arr2) {
   shuffleArray(arr1);
   shuffleArray(arr2);
@@ -166,9 +164,9 @@ function chooseIngredientA(callback) {
 
 let modalButton = document.querySelector("#thing");
 
-function replace(){
-  modalButton.classList.remove('invisible');
-  modalButton.classList.add('visible');
+function replace() {
+  modalButton.classList.remove("invisible");
+  modalButton.classList.add("visible");
 }
 
 function chooseIngredientB(callback) {
@@ -200,7 +198,9 @@ function chooseIngredientB(callback) {
 }
 
 function initiatePrep() {
-  if(selectionArr.length < 2) {return};
+  if (selectionArr.length < 2) {
+    return;
+  }
   if (selectionArr.length == 2) {
     replace();
     console.log("here");
@@ -218,39 +218,47 @@ function initiatePrep() {
   // console.log(selectedMeal, selectedRate);
 }
 
-const star = './resources/biggerstar.png'
+const star = "./resources/biggerstar.png";
 
-function makeMeal(){
+function makeMeal() {
   let selectedMeal =
-  selectedIngredientA.data[
-    Math.floor(Math.random() * selectedIngredientA.data.length)
-  ] +
-  " " +
-  selectedIngredientB.data[
-    Math.floor(Math.random() * selectedIngredientB.data.length)
-  ];
+    selectedIngredientA.data[
+      Math.floor(Math.random() * selectedIngredientA.data.length)
+    ] +
+    " " +
+    selectedIngredientB.data[
+      Math.floor(Math.random() * selectedIngredientB.data.length)
+    ];
   let selectedRate = selectedIngredientA.rate + selectedIngredientB.rate;
   let mealName = document.querySelector("#exampleModalLongTitle");
   let mealRate = document.getElementById("rating");
   mealName.innerHTML = selectedMeal;
+  let dubious = document.createElement("img");
+  dubious.classList.add('dubious');
+  let dubiousUrl =
+    './resources/dubious.png';
+  dubious.src = dubiousUrl;
+  let src = document.querySelector("#myModal > div > div > div.meal-image");
+  src.appendChild(dubious);
   // mealRate.innerHTML = selectedRate;
   generateStars(mealRate, selectedRate);
 }
 
-function generateStars(element, amount) { // I need to fix this function. Something is wrong.
-  for(i = 0; i < amount; i++) {
+function generateStars(element, amount) {
+  // I need to fix this function. Something is wrong.
+  for (i = 0; i < amount; i++) {
     var stars = document.createElement("img");
     stars.src = star;
-    stars.classList.add('make-smaller');
+    stars.classList.add("make-smaller");
     element.appendChild(stars);
   }
 }
 
-function nextRound(){
+function nextRound() {
   let nextButton = document.getElementById("next");
-  nextButton.addEventListener('click', update);
-  function update(){
-    document.getElementById('myModal').modal('hide');
+  nextButton.addEventListener("click", update);
+  function update() {
+    document.getElementById("myModal").modal("hide");
     print(ingredientsA, ingredientsB);
     chooseIngredientA(this.initiatePrep);
     chooseIngredientB(this.initiatePrep);
