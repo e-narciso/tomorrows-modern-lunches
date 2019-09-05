@@ -61,7 +61,7 @@ let ingredient6 = document.getElementById("ingredient6");
 let ingredient7 = document.getElementById("ingredient7");
 let ingredient8 = document.getElementById("ingredient8");
 let selectedIngredientA, selectedIngredientB;
-const selectionArr = [];
+let selectionArr = [];
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -83,40 +83,19 @@ function print(arr1, arr2) {
   ingredient6.innerHTML = arr2[1].name;
   ingredient7.innerHTML = arr2[2].name;
   ingredient8.innerHTML = arr2[3].name;
-  console.log(
-    arr1[0].name,
-    arr1[1].name,
-    arr2[0].name,
-    arr2[1].name,
-    arr1[1].data[Math.floor(Math.random() * arr1[1].data.length)],
-    arr2[1].rate
-  );
+  // console.log(
+  //   arr1[0].name,
+  //   arr1[1].name,
+  //   arr2[0].name,
+  //   arr2[1].name,
+  //   arr1[1].data[Math.floor(Math.random() * arr1[1].data.length)],
+  //   arr2[1].rate
+  // );
 }
 
 // rnd = Math.floor(Math.random() * ingredientsA.length);
 // rnd2 = Math.floor(Math.random() * ingredientsB.length);
 // selectedMeal = ingredientsA[rnd].data + " " + ingredientsB[rnd2].data;
-
-const starredMeals = 0;
-const failedMeals = 0;
-
-// function rateHandler() {
-//   let rate = x; // DOM element determining rating.value
-//   if (rate == 5) {
-//     selectedMeal.rating = 5;
-//     starredMeals++;
-//   } else if (rate == 4) {
-//     selectedMeal.rating = 4;
-//   }
-//   if (rate <= 3 && rate > 1) {
-//     selectedMeal.rating--;
-//   }
-//   if (selectedMeal.rating <= 3 || rate == 1) {
-//     badMeal = meals.indexOf(selectedMeal);
-//     meals.splice(badMeal, 1);
-//     failedMeals++;
-//   }
-// }
 
 function failure(failedMeals) {
   if (failedMeals >= 5) {
@@ -142,8 +121,9 @@ function chooseIngredientA(callback) {
   }
 
   function display() {
+    $(".robot").addClass("spin");
     this.classList.add("highlight");
-    console.log(this.innerHTML);
+    // console.log(this.innerHTML);
     if (this.innerHTML == ingredientsA[0].name) {
       selectedIngredientA = ingredientsA[0];
     } else if (this.innerHTML == ingredientsA[1].name) {
@@ -156,7 +136,7 @@ function chooseIngredientA(callback) {
     for (var i = 0; i < ingArr1.length; i++) {
       ingArr1[i].removeEventListener("click", display);
     }
-    console.log(selectedIngredientA);
+    // console.log(selectedIngredientA);
     selectionArr.push(selectedIngredientA);
     initiatePrep();
   }
@@ -165,8 +145,13 @@ function chooseIngredientA(callback) {
 let modalButton = document.querySelector("#thing");
 
 function replace() {
-  modalButton.classList.remove("invisible");
-  modalButton.classList.add("visible");
+  if (modalButton.className.includes("invisible")) {
+    modalButton.className = "visible btn btn-primary";
+    //modalButton.className.add("visible");
+  } else {
+    //modalButton.className.add("invisible");
+    modalButton.className = "invisible btn btn-primary";
+  }
 }
 
 function chooseIngredientB(callback) {
@@ -177,8 +162,9 @@ function chooseIngredientB(callback) {
   }
 
   function display() {
+    $(".robot").removeClass("spin");
     this.classList.add("highlight");
-    console.log(this.innerHTML);
+    // console.log(this.innerHTML);
     if (this.innerHTML == ingredientsB[0].name) {
       selectedIngredientB = ingredientsB[0];
     } else if (this.innerHTML == ingredientsB[1].name) {
@@ -192,7 +178,7 @@ function chooseIngredientB(callback) {
       ingArr2[i].removeEventListener("click", display);
     }
     selectionArr.push(selectedIngredientB);
-    console.log(selectedIngredientB, selectionArr);
+    // console.log(selectedIngredientB, selectionArr);
     initiatePrep();
   }
 }
@@ -203,7 +189,7 @@ function initiatePrep() {
   }
   if (selectionArr.length == 2) {
     replace();
-    console.log("here");
+    // console.log("here");
   }
   // let selectedMeal =
   //   selectedIngredientA.data[
@@ -218,7 +204,16 @@ function initiatePrep() {
   // console.log(selectedMeal, selectedRate);
 }
 
-const star = "./resources/biggerstar.png";
+let starredMeals = 0;
+let failedMeals = 0;
+
+function rateHandler(rate) {
+  if (rate >= 4) {
+    starredMeals++;
+  } else if (rate <= 2) {
+    failedMeals++;
+  } else if (rate == 3) { return }
+}
 
 function makeMeal() {
   let selectedMeal =
@@ -230,43 +225,67 @@ function makeMeal() {
       Math.floor(Math.random() * selectedIngredientB.data.length)
     ];
   let selectedRate = selectedIngredientA.rate + selectedIngredientB.rate;
+  rateHandler(selectedRate);
   let mealName = document.querySelector("#exampleModalLongTitle");
   let mealRate = document.getElementById("rating");
+  // console.log(selectedRate );
   mealName.innerHTML = selectedMeal;
   let dubious = document.createElement("img");
-  dubious.classList.add('dubious');
-  let dubiousUrl =
-    './resources/dubious.png';
+  dubious.classList.add("dubious");
+  let dubiousUrl = "./resources/dubious.png";
   dubious.src = dubiousUrl;
   let src = document.querySelector("#myModal > div > div > div.meal-image");
-  src.appendChild(dubious);
+  // console.log(dubious)
+  src.innerHTML = `<img class="dubious" src=${dubiousUrl} />`;
   // mealRate.innerHTML = selectedRate;
   generateStars(mealRate, selectedRate);
 }
 
+// const stars = document.createElement("img");
+
 function generateStars(element, amount) {
   // I need to fix this function. Something is wrong.
   for (i = 0; i < amount; i++) {
-    var stars = document.createElement("img");
-    stars.src = star;
-    stars.classList.add("make-smaller");
-    element.appendChild(stars);
+    //stars.src = star;
+    // stars.classList.add("make-smaller");
+    // element.appendChild(stars);
+    element.innerHTML += `<img class="make-smaller" src="./resources/biggerstar.png" />`;
   }
 }
 
-function nextRound() {
-  let nextButton = document.getElementById("next");
-  nextButton.addEventListener("click", update);
-  function update() {
-    document.getElementById("myModal").modal("hide");
-    print(ingredientsA, ingredientsB);
-    chooseIngredientA(this.initiatePrep);
-    chooseIngredientB(this.initiatePrep);
-  }
-}
+// function nextRound() {
+//   update()
+// }
 
-window.onload = function() {
+let nextButton = document.getElementById("next");
+nextButton.addEventListener("click", update);
+
+window.onload = init;
+
+function init() {
+  selectedIngredientA, selectedIngredientB;
+  selectionArr = [];
+  // stars.innerHTML = '';
+  destroyFast("rating");
+  $(".ingredient").removeClass("highlight");
   print(ingredientsA, ingredientsB);
   chooseIngredientA(this.initiatePrep);
   chooseIngredientB(this.initiatePrep);
-};
+}
+
+function destroyFast(container) {
+  let el = document.getElementById(container);
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
+}
+
+function update() {
+  console.log(starredMeals, failedMeals);
+  $("#myModal").modal("hide");
+  // $('body').removeClass('modal-open')
+  // $("#myModal").hide().removeClass('show').attr('aria-hidden','true').removeAttr('aria-modal');
+  // $(".modal-backdrop").remove();
+  replace();
+  init();
+}

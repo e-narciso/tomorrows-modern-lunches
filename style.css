@@ -4,11 +4,14 @@ body{
   font-family: 'Press Start 2P';
 }
 
+
 .ingredient {
     min-width: 200px;
     height: 80px;
     background: white;
     margin: 10px;
+    display: flex;
+    align-items: center;
   }
 
   /* .ingredient p {
@@ -43,8 +46,12 @@ body{
     /* height: 220px; */
     margin-top: -150px; /* Half the height */
     margin-left: -100px; /* Half the width */
+    transition: all .5s;
  }
-
+ .robot.spin{
+  transform: rotateY(180deg);
+ }
+ 
  .left {
      border: 5px dashed grey;
  }
