@@ -1,20 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
 
-body{
-  font-family: 'Press Start 2P';
+@font-face {
+  font-family: "typewriter";
+  src: url("./resources/type_writer.ttf") format("truetype");
 }
 
+body {
+  font-family: "Press Start 2P";
+}
 
 .ingredient {
-    min-width: 200px;
-    height: 80px;
-    background: white;
-    margin: 10px;
-    display: flex;
-    align-items: center;
-  }
+  min-width: 200px;
+  height: 80px;
+  background: white;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+}
 
-  /* .ingredient p {
+/* .ingredient p {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -22,57 +26,100 @@ body{
     border: 1px solid grey;
   } */
 
-  .ingredient:hover {
-    border: 5px dashed rgba(0,0,255,.4);
+.ingredient:hover {
+  border: 5px dashed rgba(0, 0, 255, 0.4);
+}
+@keyframes ants {
+  to {
+    background-position: 100% 100%;
   }
-  @keyframes ants { to { background-position: 100% 100% } }
-  .ingredient.highlight {
-    border: 5px solid transparent; /*rgba(0,200,0,.5);*/
-    background: linear-gradient(rgb(209, 255, 209), rgb(209, 255, 209)) padding-box,
-	            repeating-linear-gradient(-45deg, rgb(25, 133, 34) 0, rgb(25, 133, 34) 25%, transparent 0, transparent 50%) 0 / .8em .8em;
-	animation: ants 12s linear infinite;
-	
-	max-width: 20em;
-  }
+}
+.ingredient.highlight {
+  border: 5px solid transparent; /*rgba(0,200,0,.5);*/
+  background: linear-gradient(rgb(209, 255, 209), rgb(209, 255, 209))
+      padding-box,
+    repeating-linear-gradient(
+        -45deg,
+        rgb(25, 133, 34) 0,
+        rgb(25, 133, 34) 25%,
+        transparent 0,
+        transparent 50%
+      )
+      0 / 0.8em 0.8em;
+  animation: ants 12s linear infinite;
 
+  max-width: 20em;
+}
 
-
-  
-  .robot {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;
-    /* height: 220px; */
-    margin-top: -150px; /* Half the height */
-    margin-left: -100px; /* Half the width */
-    transition: all .5s;
- }
- .robot.spin{
+.robot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  /* height: 220px; */
+  margin-top: -150px; /* Half the height */
+  margin-left: -100px; /* Half the width */
+  transition: all 0.5s steps(8);
+}
+.robot.spin {
   transform: rotateY(180deg);
+}
+
+/* .robot.choppyleft {
+   animation: choppy .5s forwards;
  }
 
- .left {
-     border: 5px dashed grey;
- }
+ @keyframes choppyleft {
+   20% {
+    transform: rotateY(0deg)
+   }
+   21%{
+    transform: rotateY(40deg)
+   }
+   40% {
+    transform: rotateY(40deg)
+   }
+   41%{
+    transform: rotateY(80deg)
+   }
+   60%{
+    transform: rotateY(80deg)
+   }
+   61%{
+    transform: rotateY(120deg)
+   }
+   80%{
+    transform: rotateY(120deg)
+   }
+   81%{
+    transform: rotateY(160deg)
+   }
+   100%{
+    transform: rotateY(180deg)
+   }
+ } */
 
- .right {
-     border: 5px dashed grey;
- }
+.left {
+  border: 5px dashed grey;
+}
 
- .boxes{
-     margin-top: 50px;
- }
+.right {
+  border: 5px dashed grey;
+}
 
- h2 {
-     padding-top: 80px;
- }
+.boxes {
+  margin-top: 50px;
+}
 
-.make-smaller{
+h2 {
+  padding-top: 80px;
+}
+
+.make-smaller {
   max-width: 50px;
 }
 
-.meal-image{
+.meal-image {
   display: relative;
   margin: 0 auto;
   margin-top: 40px;
@@ -82,7 +129,7 @@ body{
   border: 1px solid red;
 }
 
-.dubious{
+.dubious {
   max-height: 100%;
   display: block;
   margin-left: auto;
@@ -97,26 +144,22 @@ h6 {
 }
 
 #splashscreen {
-  position:absolute;
-  z-index: 50;
-  min-width:100%;
+  position: absolute;
+  z-index: 2;
+  min-width: 100%;
   text-align: center;
-  /*padding-left: 200px;
-  padding-right: 200px;
-  padding-bottom: 100px; */
-  /* padding-top: 100px; */
   min-height: 100%;
-  background-color:white;
+  background-color: white;
 }
 
-#splashscreen h2{
+#splashscreen h2 {
   margin-bottom: 50px;
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
 
-#splashscreen a{
+#splashscreen a {
   display: none;
 }
 
@@ -130,8 +173,39 @@ h6 {
   }
 }
 
-
 #splashscreen p {
   line-height: 32px;
 }
 
+.series h3 {
+  margin: 20px;
+}
+
+.series h6 {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 50px;
+  font-family: "typewriter";
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#gameOverOne {
+  position: absolute;
+  display: none;
+  color: white;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  text-align: center;
+  min-height: 100%;
+  background-color: black;
+  transition: all 2s steps(8);
+  display: block;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+  z-index: -500;
+}

@@ -74,7 +74,6 @@ function shuffleArray(array) {
 function print(arr1, arr2) {
   shuffleArray(arr1);
   shuffleArray(arr2);
-  //ingredient1.innerHTML = `<img src=${dubious}><p>${arr1[0].name}</p>`;
   ingredient1.innerHTML = arr1[0].name;
   ingredient2.innerHTML = arr1[1].name;
   ingredient3.innerHTML = arr1[2].name;
@@ -83,34 +82,6 @@ function print(arr1, arr2) {
   ingredient6.innerHTML = arr2[1].name;
   ingredient7.innerHTML = arr2[2].name;
   ingredient8.innerHTML = arr2[3].name;
-  // console.log(
-  //   arr1[0].name,
-  //   arr1[1].name,
-  //   arr2[0].name,
-  //   arr2[1].name,
-  //   arr1[1].data[Math.floor(Math.random() * arr1[1].data.length)],
-  //   arr2[1].rate
-  // );
-}
-
-// rnd = Math.floor(Math.random() * ingredientsA.length);
-// rnd2 = Math.floor(Math.random() * ingredientsB.length);
-// selectedMeal = ingredientsA[rnd].data + " " + ingredientsB[rnd2].data;
-
-function failure(failedMeals) {
-  if (failedMeals >= 5) {
-    // Create "GAME OVER" screen that announces Tomorrow's Modern Lunches Co. has been dissolved
-  }
-}
-
-function success(starredMeals) {
-  if (starredMeals == 3) {
-    // Create "SUCCESS" screen that announces Tomorrow's Modern Lunches Co. has secured Series A funding
-  } else if (starredMeals == 6) {
-    // Create "SUCCESS" screen announcing Series B funding
-  } else if (starredMeals == 9) {
-    // Create "GAME OVER" screen announcing TML has been acquired by Yelp and dissolved
-  }
 }
 
 function chooseIngredientA(callback) {
@@ -123,7 +94,6 @@ function chooseIngredientA(callback) {
   function display() {
     $(".robot").addClass("spin");
     this.classList.add("highlight");
-    // console.log(this.innerHTML);
     if (this.innerHTML == ingredientsA[0].name) {
       selectedIngredientA = ingredientsA[0];
     } else if (this.innerHTML == ingredientsA[1].name) {
@@ -136,21 +106,8 @@ function chooseIngredientA(callback) {
     for (var i = 0; i < ingArr1.length; i++) {
       ingArr1[i].removeEventListener("click", display);
     }
-    // console.log(selectedIngredientA);
     selectionArr.push(selectedIngredientA);
     initiatePrep();
-  }
-}
-
-let modalButton = document.querySelector("#thing");
-
-function replace() {
-  if (modalButton.className.includes("invisible")) {
-    modalButton.className = "visible btn btn-primary";
-    //modalButton.className.add("visible");
-  } else {
-    //modalButton.className.add("invisible");
-    modalButton.className = "invisible btn btn-primary";
   }
 }
 
@@ -164,7 +121,6 @@ function chooseIngredientB(callback) {
   function display() {
     $(".robot").removeClass("spin");
     this.classList.add("highlight");
-    // console.log(this.innerHTML);
     if (this.innerHTML == ingredientsB[0].name) {
       selectedIngredientB = ingredientsB[0];
     } else if (this.innerHTML == ingredientsB[1].name) {
@@ -178,7 +134,6 @@ function chooseIngredientB(callback) {
       ingArr2[i].removeEventListener("click", display);
     }
     selectionArr.push(selectedIngredientB);
-    // console.log(selectedIngredientB, selectionArr);
     initiatePrep();
   }
 }
@@ -189,31 +144,30 @@ function initiatePrep() {
   }
   if (selectionArr.length == 2) {
     replace();
-    // console.log("here");
   }
-  // let selectedMeal =
-  //   selectedIngredientA.data[
-  //     Math.floor(Math.random() * selectedIngredientA.data.length)
-  //   ] +
-  //   " " +
-  //   selectedIngredientB.data[
-  //     Math.floor(Math.random() * selectedIngredientB.data.length)
-  //   ];
-  // let selectedRate = selectedIngredientA.rate + selectedIngredientB.rate;
   makeMeal();
-  // console.log(selectedMeal, selectedRate);
 }
 
 let starredMeals = 0;
 let failedMeals = 0;
+let threeStars = 0;
+let twoStars = 0;
 
 function rateHandler(rate) {
   if (rate >= 4) {
     starredMeals++;
-  } else if (rate <= 2) {
+  } else if (rate == 1) {
     failedMeals++;
   } else if (rate == 3) {
-    return;
+    threeStars++;
+    if(threeStars % 2 === 0){
+      starredMeals++;
+    }
+  } else if(rate == 2){
+    twoStars++;
+    if(twoStars % 5 === 0){
+      failedMeals++;
+    }
   }
 }
 
@@ -230,54 +184,94 @@ function makeMeal() {
   rateHandler(selectedRate);
   let mealName = document.querySelector("#exampleModalLongTitle");
   let mealRate = document.getElementById("rating");
-  // console.log(selectedRate );
   mealName.innerHTML = selectedMeal;
   let dubious = document.createElement("img");
   dubious.classList.add("dubious");
   let dubiousUrl = "./resources/dubious.png";
   dubious.src = dubiousUrl;
   let src = document.querySelector("#myModal > div > div > div.meal-image");
-  // console.log(dubious)
   src.innerHTML = `<img class="dubious" src=${dubiousUrl} />`;
-  // mealRate.innerHTML = selectedRate;
   generateStars(mealRate, selectedRate);
 }
 
-// const stars = document.createElement("img");
-
 function generateStars(element, amount) {
-  // I need to fix this function. Something is wrong.
   for (i = 0; i < amount; i++) {
-    //stars.src = star;
-    // stars.classList.add("make-smaller");
-    // element.appendChild(stars);
     element.innerHTML += `<img class="make-smaller" src="./resources/biggerstar.png" />`;
   }
 }
 
-// function nextRound() {
-//   update()
+function failure(count) {
+  if (count >= 5) {
+    // Create "GAME OVER" screen that announces Tomorrow's Modern Lunches Co. has been dissolved
+  }
+}
+
+function success(count) {
+  if (count == 3) {
+    $('#goodModalOne').modal('show');
+    // Create "SUCCESS" screen that announces Tomorrow's Modern Lunches Co. has secured Series A funding
+  } else if (count == 6) {
+    $('#goodModalTwo').modal('show');
+    // Create "SUCCESS" screen announcing Series B funding
+  } else if (count == 9) {
+    // Create "GAME OVER" screen announcing TML has been acquired by Yelp and dissolved
+  }
+}
+
+// $('#close-one').addEventListener('click', close);
+// function close(){
+//   $('#goodModalOne').modal('hide');
 // }
 
 let nextButton = document.getElementById("next");
 nextButton.addEventListener("click", update);
 
-window.onload = start;
+$('.retry-link').click(function(){
+  location.reload();
+})
 
-function start(){
-  typeWriter();
-  init();
+$(".enter_link").click(function() {
+  $(this)
+    .parent("#splashscreen")
+    .fadeOut(500);
+});
+
+let text = [`Lorem ipsum typing effect!`, `Some other string of test text`];
+let i = 0;
+let k = 0;
+let current = text[k];
+function typeWriter() {
+  if (i < current.length) {
+    document.querySelector(".splashtext").innerHTML += current[i];
+    i++;
+    setTimeout(typeWriter, 80);
+  } else if (i === current.length) {
+    current = text[k + 1];
+    i = 0;
+    k++;
+    document.querySelector(".splashtext").innerHTML += "<br>";
+    setTimeout(typeWriter, 300);
+  }
+  if (k == text.length) {
+    document
+      .querySelector("#splashscreen > a")
+      .setAttribute("style", "display:block");
+  }
 }
 
 function init() {
   selectedIngredientA, selectedIngredientB;
   selectionArr = [];
-  // stars.innerHTML = '';
   destroyFast("rating");
   $(".ingredient").removeClass("highlight");
   print(ingredientsA, ingredientsB);
   chooseIngredientA(this.initiatePrep);
   chooseIngredientB(this.initiatePrep);
+}
+
+function start() {
+  typeWriter();
+  init();
 }
 
 function destroyFast(container) {
@@ -287,100 +281,22 @@ function destroyFast(container) {
   }
 }
 
+let modalButton = document.querySelector("#thing");
+
+function replace() {
+  if (modalButton.className.includes("invisible")) {
+    modalButton.className = "visible btn btn-primary";
+  } else {
+    modalButton.className = "invisible btn btn-primary";
+  }
+}
+
 function update() {
-  console.log(starredMeals, failedMeals);
+  console.log(starredMeals, failedMeals, threeStars, twoStars);
   $("#myModal").modal("hide");
-  // $('body').removeClass('modal-open')
-  // $("#myModal").hide().removeClass('show').attr('aria-hidden','true').removeAttr('aria-modal');
-  // $(".modal-backdrop").remove();
+  success(starredMeals);
   replace();
   init();
 }
 
-$(".enter_link").click(function() {
-  $(this)
-    .parent("#splashscreen")
-    .fadeOut(500);
-});
-
-// var i = 0;
-// var j = 0;
-// let k = 0;
-// let current = texts[k];
-// var speed2 = 40;
-// var title = "Tomorrow's Modern Lunches Co. Welcomes You!"
-// var txt = 'Lorem ipsum typing effect!'; /* The text */
-// var speed = 50; /* The speed/duration of the effect in milliseconds */
-
-let text = [
-  `Lorem ipsum typing effect!`,
-  `Some other string of test text`
-];
-let i = 0;
-let k = 0;
-let current = text[k];
- function typeWriter() {
-  if (i < current.length) {
-    document.querySelector(".splashtext").innerHTML += current[i];
-    i++;
-    setTimeout(typeWriter, 80);
-  }
-  else if (i === current.length){
-    current = text[k+1]
-    i=0;
-    k++;
-    document.querySelector(".splashtext").innerHTML += "<br>";
-    setTimeout(typeWriter, 300);
-  }
-  if(k == text.length){
-    document.querySelector("#splashscreen > a").setAttribute("style", "display:block");
-  }
-}
-
-// function welcomeText(){
-//   if (j < title.length) {
-//     document.getElementById("title").innerHTML += title.charAt(j);
-//     j++;
-//     setTimeout(welcomeText, speed2);
-//   }
-// }
-
-//  function typeWriter() {
-//   if (i < current.length) {
-//     document.querySelector(alkjlael).innerHTML = "<p>"
-//     document.querySelector(“#intro p”).innerHTML += current[i];
-//     i++;
-//     setTimeout(typeWriter, 150);
-//   }
-//   else if (i === current.length){
-//     document.querySelector(asldajsld).innerHTML += "</p>"
-//     current = texts[k+1]
-//     i=0;
-//     k++
-//     document.querySelector(“#intro p”).innerHTML += “<br>”
-//     setTimeout(typeWriter, 700);
-//   }
-//  }
-
-//  let texts = [
-//   “Hello!“,
-//   “I’m Lauren.“,
-//   “I am a web developer.”
-//  ]
-//  let i = 0;
-//  let k = 0;
-//  let current = texts[k];
-//  function typeWriter() {
-//   if (i < current.length) {
-//     document.querySelector(“#intro p”).innerHTML += current[i];
-//     i++;
-//     setTimeout(typeWriter, 150);
-//   }
-//   else if (i === current.length){
-//     current = texts[k+1]
-//     i=0;
-//     k++
-//     document.querySelector(“#intro p”).innerHTML += “<br>”
-//     setTimeout(typeWriter, 700);
-//   }
-//
+window.onload = start;
