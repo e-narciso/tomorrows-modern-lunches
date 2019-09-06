@@ -323,14 +323,17 @@ let current = text[k];
   if (i < current.length) {
     document.querySelector(".splashtext").innerHTML += current[i];
     i++;
-    setTimeout(typeWriter, 50);
+    setTimeout(typeWriter, 80);
   }
   else if (i === current.length){
     current = text[k+1]
     i=0;
-    k++
-    document.querySelector(".splashtext").innerHTML += "<br>"
-    setTimeout(typeWriter, 150);
+    k++;
+    document.querySelector(".splashtext").innerHTML += "<br>";
+    setTimeout(typeWriter, 300);
+  }
+  if(k == text.length){
+    document.querySelector("#splashscreen > a").setAttribute("style", "display:block");
   }
 }
 

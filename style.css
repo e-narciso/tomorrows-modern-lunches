@@ -110,9 +110,28 @@ h6 {
 }
 
 #splashscreen h2{
-  margin-bottom: 80px;
+  margin-bottom: 50px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.splashtext {
+#splashscreen a{
+  display: none;
+}
+
+.blinker {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+#splashscreen p {
   line-height: 32px;
 }
+
