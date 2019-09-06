@@ -202,19 +202,23 @@ function generateStars(element, amount) {
 
 function failure(count) {
   if (count >= 5) {
-    // Create "GAME OVER" screen that announces Tomorrow's Modern Lunches Co. has been dissolved
+    document.querySelector('#gameOverOne').classList.remove('hidden');
   }
 }
 
+let modalCount = 0;
 function success(count) {
-  if (count == 3) {
+  if (count == 3 && modalCount == 0) {
     $('#goodModalOne').modal('show');
+    modalCount++;
     // Create "SUCCESS" screen that announces Tomorrow's Modern Lunches Co. has secured Series A funding
-  } else if (count == 6) {
+  } else if (count == 6 && modalCount == 1) {
     $('#goodModalTwo').modal('show');
+    modalCount++;
     // Create "SUCCESS" screen announcing Series B funding
-  } else if (count == 9) {
+  } else if (count == 9 && modalCount == 2) {
     // Create "GAME OVER" screen announcing TML has been acquired by Yelp and dissolved
+    document.querySelector('#gameOverTwo').classList.remove('hidden');
   }
 }
 
@@ -250,7 +254,7 @@ function typeWriter() {
     i = 0;
     k++;
     document.querySelector(".splashtext").innerHTML += "<br>";
-    setTimeout(typeWriter, 300);
+    setTimeout(typeWriter, 80);
   }
   if (k == text.length) {
     document
@@ -295,6 +299,7 @@ function update() {
   console.log(starredMeals, failedMeals, threeStars, twoStars);
   $("#myModal").modal("hide");
   success(starredMeals);
+  failure(failedMeals);
   replace();
   init();
 }
