@@ -1,68 +1,3 @@
-const ingredientsA = [
-  {
-    id: 1,
-    name: "ingredient 1",
-    data: ["beginning of", "the start of", "a plate of"],
-    rate: Math.floor(Math.random() * 2 + 0.1)
-  },
-  {
-    id: 2,
-    name: "ingredient 2",
-    data: ["beginning of", "the start of", "a plate of"],
-    rate: Math.floor(Math.random() * 2 + 0.1)
-  },
-  {
-    id: 3,
-    name: "ingredient 3",
-    data: ["beginning of", "the start of", "a plate of"],
-    rate: Math.floor(Math.random() * 2 + 0.1)
-  },
-  {
-    id: 4,
-    name: "ingredient 4",
-    data: ["beginning of", "the start of", "a plate of"],
-    rate: Math.floor(Math.random() * 2 + 0.1)
-  }
-];
-
-const ingredientsB = [
-  {
-    id: 5,
-    name: "ingredient 5",
-    data: ["a message", "a name", "bad food"],
-    rate: Math.floor(Math.random() * 3 + 1)
-  },
-  {
-    id: 6,
-    name: "ingredient 6",
-    data: ["a message", "a name", "bad food"],
-    rate: Math.floor(Math.random() * 3 + 1)
-  },
-  {
-    id: 7,
-    name: "ingredient 7",
-    data: ["a message", "a name", "bad food"],
-    rate: Math.floor(Math.random() * 3 + 1)
-  },
-  {
-    id: 8,
-    name: "ingredient 8",
-    data: ["a message", "a name", "bad food"],
-    rate: Math.floor(Math.random() * 3 + 1)
-  }
-];
-
-let ingredient1 = document.getElementById("ingredient1");
-let ingredient2 = document.getElementById("ingredient2");
-let ingredient3 = document.getElementById("ingredient3");
-let ingredient4 = document.getElementById("ingredient4");
-let ingredient5 = document.getElementById("ingredient5");
-let ingredient6 = document.getElementById("ingredient6");
-let ingredient7 = document.getElementById("ingredient7");
-let ingredient8 = document.getElementById("ingredient8");
-let selectedIngredientA, selectedIngredientB;
-let selectionArr = [];
-
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -148,11 +83,6 @@ function initiatePrep() {
   makeMeal();
 }
 
-let starredMeals = 0;
-let failedMeals = 0;
-let threeStars = 0;
-let twoStars = 0;
-
 function rateHandler(rate) {
   if (rate >= 4) {
     starredMeals++;
@@ -203,6 +133,8 @@ function generateStars(element, amount) {
 function failure(count) {
   if (count >= 5) {
     document.querySelector('#gameOverOne').classList.remove('hidden');
+    typingGameOverOne();
+    // typingGameOver(goOneText, goOneExplain, thisWordOne);
   }
 }
 
@@ -211,21 +143,15 @@ function success(count) {
   if (count == 3 && modalCount == 0) {
     $('#goodModalOne').modal('show');
     modalCount++;
-    // Create "SUCCESS" screen that announces Tomorrow's Modern Lunches Co. has secured Series A funding
   } else if (count == 6 && modalCount == 1) {
     $('#goodModalTwo').modal('show');
     modalCount++;
-    // Create "SUCCESS" screen announcing Series B funding
   } else if (count == 9 && modalCount == 2) {
-    // Create "GAME OVER" screen announcing TML has been acquired by Yelp and dissolved
     document.querySelector('#gameOverTwo').classList.remove('hidden');
+    typingGameOverTwo();
+    // typingGameOver(goTwoText, goTwoExplain, thisWordTwo);
   }
 }
-
-// $('#close-one').addEventListener('click', close);
-// function close(){
-//   $('#goodModalOne').modal('hide');
-// }
 
 let nextButton = document.getElementById("next");
 nextButton.addEventListener("click", update);
@@ -240,26 +166,58 @@ $(".enter_link").click(function() {
     .fadeOut(500);
 });
 
-let text = [`Lorem ipsum typing effect!`, `Some other string of test text`];
 let i = 0;
 let k = 0;
-let current = text[k];
+let current = welcomeText[k];
 function typeWriter() {
   if (i < current.length) {
     document.querySelector(".splashtext").innerHTML += current[i];
     i++;
-    setTimeout(typeWriter, 80);
+    setTimeout(typeWriter, 30);
   } else if (i === current.length) {
-    current = text[k + 1];
+    current = welcomeText[k + 1];
     i = 0;
     k++;
     document.querySelector(".splashtext").innerHTML += "<br>";
     setTimeout(typeWriter, 80);
   }
-  if (k == text.length) {
+  if (k == welcomeText.length) {
     document
       .querySelector("#splashscreen > a")
       .setAttribute("style", "display:block");
+  }
+}
+
+let n = 0;
+let m = 0;
+let thisWordOne = goOneText[m];
+let thisWordTwo = goTwoText[m];
+
+function typingGameOverOne(){
+  if (n < thisWordOne.length) {
+    goOneExplain.innerHTML += thisWordOne[n];
+    n++;
+    setTimeout(typingGameOverOne, 100);
+  } else if (n === thisWordOne.length) {
+    thisWordOne = goOneText[m+1];
+    n = 0;
+    m++;
+    goOneExplain.innerHTML += "<br>";
+    setTimeout(typingGameOverOne, 200);
+  }
+}
+
+function typingGameOverTwo(){
+  if (n < thisWordTwo.length) {
+    goTwoExplain.innerHTML += thisWordTwo[n];
+    n++;
+    setTimeout(typingGameOverTwo, 100);
+  } else if (n === thisWordTwo.length) {
+    thisWordTwo = goTwoText[m+1];
+    n = 0;
+    m++;
+    goTwoExplain.innerHTML += "<br>";
+    setTimeout(typingGameOverTwo, 200);
   }
 }
 
@@ -298,10 +256,19 @@ function replace() {
 function update() {
   console.log(starredMeals, failedMeals, threeStars, twoStars);
   $("#myModal").modal("hide");
+  scoreBoard();
   success(starredMeals);
   failure(failedMeals);
   replace();
   init();
+}
+
+function scoreBoard(){
+  let scores = document.getElementById('scores');
+  scores.innerHTML = `
+  <p>Successful Dishes: ${starredMeals}</p>
+  <p>Failed Dishes: ${failedMeals}</p>
+  `
 }
 
 window.onload = start;

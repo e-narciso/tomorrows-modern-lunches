@@ -25,42 +25,44 @@
       <p class="splashtext"></p>
       <a href="#" class="enter_link blinker">JOB START</a>
     </div>
-    <h2 class="d-flex justify-content-center">Tomorrow's Modern Lunches</h2>
-    <img
-      class="robot"
-      src="../../../../Desktop/PinClipart.com_robot-arm-clip-art_2017540.png"
-    />
-    <div class="boxes">
-      <div class="row justify-content-around text-center">
-        <div class="col-sm-2 left ingredient" id="ingredient1">
-          One of two columns
+    <div class="gameboard">
+      <h2 class="d-flex justify-content-center">Tomorrow's Modern Lunches</h2>
+      <img
+        class="robot"
+        src="./resources/PinClipart.com_robot-arm-clip-art_2017540.png"
+      />
+      <div class="boxes">
+        <div class="row justify-content-around text-center">
+          <div class="col-sm-2 left ingredient" id="ingredient1">
+            One of two columns
+          </div>
+          <div class="col-sm-2 right ingredient" id="ingredient5">
+            One of two columns
+          </div>
         </div>
-        <div class="col-sm-2 right ingredient" id="ingredient5">
-          One of two columns
+        <div class="row justify-content-around text-center">
+          <div class="col-sm-2 left ingredient" id="ingredient2">
+            One of two columns
+          </div>
+          <div class="col-sm-2 right ingredient" id="ingredient6">
+            One of two columns
+          </div>
         </div>
-      </div>
-      <div class="row justify-content-around text-center">
-        <div class="col-sm-2 left ingredient" id="ingredient2">
-          One of two columns
+        <div class="row justify-content-around text-center">
+          <div class="col-sm-2 left ingredient" id="ingredient3">
+            One of two columns
+          </div>
+          <div class="col-sm-2 right ingredient" id="ingredient7">
+            One of two columns
+          </div>
         </div>
-        <div class="col-sm-2 right ingredient" id="ingredient6">
-          One of two columns
-        </div>
-      </div>
-      <div class="row justify-content-around text-center">
-        <div class="col-sm-2 left ingredient" id="ingredient3">
-          One of two columns
-        </div>
-        <div class="col-sm-2 right ingredient" id="ingredient7">
-          One of two columns
-        </div>
-      </div>
-      <div class="row justify-content-around text-center">
-        <div class="col-sm-2 left ingredient" id="ingredient4">
-          One of two columns
-        </div>
-        <div class="col-sm-2 right ingredient" id="ingredient8">
-          One of two columns
+        <div class="row justify-content-around text-center">
+          <div class="col-sm-2 left ingredient" id="ingredient4">
+            One of two columns
+          </div>
+          <div class="col-sm-2 right ingredient" id="ingredient8">
+            One of two columns
+          </div>
         </div>
       </div>
     </div>
@@ -81,14 +83,15 @@
         </div>
       </div>
     </div>
+    <div id="scores"></div>
 
     <!-- The Modal -->
 
     <div class="modal fade" id="myModal">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="meal-image"></div>
           <h5 class="modal-title text-center" id="exampleModalLongTitle"></h5>
+          <div class="meal-image"></div>
           <div id="reason">
             <h6>"I almost can't remember what <i>'food'</i> tasted like"</h6>
           </div>
@@ -115,7 +118,7 @@
               Tomorrow's Modern Lunches Co. has applied for and received its
               Series A funding! Noted venture capital firm Howitzer Bresna, best
               known for the child backpack Kevlar insert and the Snuggie, has
-              invested $10m toward expansion and distribution our "machine
+              invested $10m toward expansion and distribution of our "machine
               learning algorithm". Better get back to work, this Intelligence
               won't Artificial itself!
             </h6>
@@ -158,16 +161,18 @@
 
     <div class="fullscreen hidden" id="gameOverOne">
       <h2>Game Over</h2>
+      <img class="island" src="./resources/island.jpg" />
       <p class="gameOverOneText"></p>
       <a href="#" class="retry-link blinker">TRY AGAIN</a>
     </div>
 
     <div class="fullscreen hidden" id="gameOverTwo">
       <h2>Game Over</h2>
+      <img class="sf" src="./resources/sf.jpg" />
       <p class="gameOverTwoText"></p>
       <a href="#" class="retry-link blinker">TRY AGAIN</a>
     </div>
-
+    <script src="./arrays.js" async defer></script>
     <script src="./newlogic.js" async defer></script>
   </body>
 </html>
