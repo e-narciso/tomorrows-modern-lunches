@@ -212,7 +212,9 @@ function rateHandler(rate) {
     starredMeals++;
   } else if (rate <= 2) {
     failedMeals++;
-  } else if (rate == 3) { return }
+  } else if (rate == 3) {
+    return;
+  }
 }
 
 function makeMeal() {
@@ -260,7 +262,12 @@ function generateStars(element, amount) {
 let nextButton = document.getElementById("next");
 nextButton.addEventListener("click", update);
 
-window.onload = init;
+window.onload = start;
+
+function start(){
+  typeWriter();
+  init();
+}
 
 function init() {
   selectedIngredientA, selectedIngredientB;
@@ -289,3 +296,88 @@ function update() {
   replace();
   init();
 }
+
+$(".enter_link").click(function() {
+  $(this)
+    .parent("#splashscreen")
+    .fadeOut(500);
+});
+
+// var i = 0;
+// var j = 0;
+// let k = 0;
+// let current = texts[k];
+// var speed2 = 40;
+// var title = "Tomorrow's Modern Lunches Co. Welcomes You!"
+// var txt = 'Lorem ipsum typing effect!'; /* The text */
+// var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+let text = [
+  `Lorem ipsum typing effect!`,
+  `Some other string of test text`
+];
+let i = 0;
+let k = 0;
+let current = text[k];
+ function typeWriter() {
+  if (i < current.length) {
+    document.querySelector(".splashtext").innerHTML += current[i];
+    i++;
+    setTimeout(typeWriter, 50);
+  }
+  else if (i === current.length){
+    current = text[k+1]
+    i=0;
+    k++
+    document.querySelector(".splashtext").innerHTML += "<br>"
+    setTimeout(typeWriter, 150);
+  }
+}
+
+// function welcomeText(){
+//   if (j < title.length) {
+//     document.getElementById("title").innerHTML += title.charAt(j);
+//     j++;
+//     setTimeout(welcomeText, speed2);
+//   }
+// }
+
+//  function typeWriter() {
+//   if (i < current.length) {
+//     document.querySelector(alkjlael).innerHTML = "<p>"
+//     document.querySelector(“#intro p”).innerHTML += current[i];
+//     i++;
+//     setTimeout(typeWriter, 150);
+//   }
+//   else if (i === current.length){
+//     document.querySelector(asldajsld).innerHTML += "</p>"
+//     current = texts[k+1]
+//     i=0;
+//     k++
+//     document.querySelector(“#intro p”).innerHTML += “<br>”
+//     setTimeout(typeWriter, 700);
+//   }
+//  }
+
+//  let texts = [
+//   “Hello!“,
+//   “I’m Lauren.“,
+//   “I am a web developer.”
+//  ]
+//  let i = 0;
+//  let k = 0;
+//  let current = texts[k];
+//  function typeWriter() {
+//   if (i < current.length) {
+//     document.querySelector(“#intro p”).innerHTML += current[i];
+//     i++;
+//     setTimeout(typeWriter, 150);
+//   }
+//   else if (i === current.length){
+//     current = texts[k+1]
+//     i=0;
+//     k++
+//     document.querySelector(“#intro p”).innerHTML += “<br>”
+//     setTimeout(typeWriter, 700);
+//   }
+//

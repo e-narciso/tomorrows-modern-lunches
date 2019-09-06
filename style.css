@@ -51,7 +51,7 @@ body{
  .robot.spin{
   transform: rotateY(180deg);
  }
- 
+
  .left {
      border: 5px dashed grey;
  }
@@ -94,4 +94,25 @@ body{
 h6 {
   font-size: 12px;
   text-align: center;
+}
+
+#splashscreen {
+  position:absolute;
+  z-index: 50;
+  min-width:100%;
+  text-align: center;
+  /*padding-left: 200px;
+  padding-right: 200px;
+  padding-bottom: 100px; */
+  /* padding-top: 100px; */
+  min-height: 100%;
+  background-color:white;
+}
+
+#splashscreen h2{
+  margin-bottom: 80px;
+}
+
+.splashtext {
+  line-height: 32px;
 }
