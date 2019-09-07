@@ -299,6 +299,7 @@ a:hover{
 
 .ingredient:hover {
   border: 5px dashed rgb(129, 177, 119);
+  cursor: pointer;
 }
 @keyframes ants {
   to {
@@ -324,13 +325,13 @@ a:hover{
 
 .robot {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   width: 200px;
   /* height: 220px; */
   margin-top: -150px; /* Half the height */
   margin-left: -100px; /* Half the width */
-  transition: all 0.5s steps(6);
+  transition: all .5s steps(5);
 }
 .robot.spin {
   transform: rotateY(180deg);
