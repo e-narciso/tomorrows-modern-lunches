@@ -207,19 +207,29 @@ function typingGameOverOne(){
     goOneExplain.innerHTML += "<br>";
     setTimeout(typingGameOverOne, 200);
   }
+  if (m == goOneText.length) {
+    document
+      .querySelector(".retry-link")
+      .classList.remove("hidden");
+  }
 }
 
 function typingGameOverTwo(){
   if (n < thisWordTwo.length) {
     goTwoExplain.innerHTML += thisWordTwo[n];
     n++;
-    setTimeout(typingGameOverTwo, 100);
+    setTimeout(typingGameOverTwo, 1000);
   } else if (n === thisWordTwo.length) {
     thisWordTwo = goTwoText[m+1];
     n = 0;
     m++;
     goTwoExplain.innerHTML += "<br>";
-    setTimeout(typingGameOverTwo, 200);
+    setTimeout(typingGameOverTwo, 1000);
+  }
+  if (m == goTwoText.length) {
+    document
+      .querySelector(".retry-link")
+      .classList.remove("hidden");
   }
 }
 
