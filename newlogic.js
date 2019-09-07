@@ -89,15 +89,17 @@ function rateHandler(rate) {
   } else if (rate == 1) {
     failedMeals++;
   } else if (rate == 3) {
-    threeStars++;
-    if(threeStars % 2 === 0){
-      starredMeals++;
-    }
+    starredMeals += .5;
+    // threeStars++;
+    // if(threeStars % 2 === 0){
+    //   starredMeals++;
+    // }
   } else if(rate == 2){
-    twoStars++;
-    if(twoStars % 5 === 0){
-      failedMeals++;
-    }
+    failedMeals += .2;
+    // twoStars++;
+    // if(twoStars % 5 === 0){
+    //   failedMeals++;
+    // }
   }
 }
 
@@ -140,13 +142,13 @@ function failure(count) {
 
 let modalCount = 0;
 function success(count) {
-  if (count == 3 && modalCount == 0) {
+  if (count >= 3 && modalCount == 0) {
     $('#goodModalOne').modal('show');
     modalCount++;
-  } else if (count == 6 && modalCount == 1) {
+  } else if (count >= 6 && modalCount == 1) {
     $('#goodModalTwo').modal('show');
     modalCount++;
-  } else if (count == 9 && modalCount == 2) {
+  } else if (count >= 9 && modalCount == 2) {
     document.querySelector('#gameOverTwo').classList.remove('hidden');
     typingGameOverTwo();
     // typingGameOver(goTwoText, goTwoExplain, thisWordTwo);
@@ -266,8 +268,8 @@ function update() {
 function scoreBoard(){
   let scores = document.getElementById('scores');
   scores.innerHTML = `
-  <p>Successful Dishes: ${starredMeals}</p>
-  <p>Failed Dishes: ${failedMeals}</p>
+  <p>Successful Dishes: ${starredMeals.toFixed(1)}</p>
+  <p>Failed Dishes: ${failedMeals.toFixed(1)}</p>
   `
 }
 
