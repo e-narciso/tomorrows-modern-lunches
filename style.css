@@ -18,15 +18,7 @@ a:hover{
   color: rgb(129, 177, 119);
 }
 
-.btn-primary{
-  background-color: rgb(66, 112, 57);
-  border-color: rgb(66, 112, 57);
-}
 
-.btn-primary:hover {
-  background-color: rgb(129, 177, 119);
-  border-color: rgb(66, 112, 57);
-}
 
 /* body {
   background: #111;
@@ -142,9 +134,9 @@ a:hover{
   }
 }
 .container {
-  background: rgba(83, 109, 91, 0.103);
+  background: rgba(104, 117, 67, 0.103);
   width: 1000px;
-  height: 700px;
+  height: 780px;
   margin-top: 10px;
   position: relative;
   overflow: hidden;
@@ -160,7 +152,7 @@ a:hover{
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(88, 105, 93, 0.103);
+  background: rgba(102, 112, 63, 0.103);
   opacity: 0;
   z-index: 500000;
   pointer-events: none;
@@ -422,9 +414,11 @@ h6 {
 }
 
 #splashscreen p {
-  line-height: 32px;
+  line-height: 28px;
+  font-size: 14px;
   text-align: justify;
-  margin-left: 200px;
+  margin-left: 80px;
+  margin-right: 80px;
 }
 
 .series h3 {
@@ -454,6 +448,10 @@ h6 {
   display: block;
 }
 
+.gameOverOneText{
+  padding-top: 50px;
+}
+
 #gameOverTwo {
   position: absolute;
   display: none;
@@ -478,6 +476,8 @@ h6 {
   -moz-box-shadow: inset 0 0 50px #000000;
   -webkit-box-shadow: inset 0 0 50px #000000;
   box-shadow: inset 0 0 50px #000000;
+  height: 70%;
+  margin-bottom: 20px;
 }
 
 .sf {
@@ -489,4 +489,16 @@ h6 {
   text-align: justify;
   margin-left: 35%;
   margin-top: 15px;
+}
+
+.btn-primary{
+  background-color: rgb(66, 112, 57);
+  border-color: rgb(66, 112, 57);
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+  color: #ffffff !important;
+  background-color: rgb(129, 177, 119) !important;
+  border-color: rgb(66, 112, 57) !important;
+  box-shadow: 0 0 0 0.2rem rgba(212, 255, 156, 0.425) !important;
 }

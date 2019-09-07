@@ -82,3 +82,7 @@ let goTwoText = [
   `Lorem ipsum typing effect!`,
   `Some other string of test text`
 ];
+
+let gameOverOneMusic = new Audio('./resources/18. Game Over.mp3');
+let successTone = new Audio('./resources/success.mp3')
+let normalTone = new Audio('./resources/text.mp3')

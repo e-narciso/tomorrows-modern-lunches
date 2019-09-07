@@ -27,6 +27,7 @@ function chooseIngredientA(callback) {
   }
 
   function display() {
+    normalTone.play();
     $(".robot").addClass("spin");
     this.classList.add("highlight");
     if (this.innerHTML == ingredientsA[0].name) {
@@ -54,6 +55,7 @@ function chooseIngredientB(callback) {
   }
 
   function display() {
+    normalTone.play();
     $(".robot").removeClass("spin");
     this.classList.add("highlight");
     if (this.innerHTML == ingredientsB[0].name) {
@@ -135,6 +137,7 @@ function generateStars(element, amount) {
 function failure(count) {
   if (count >= 5) {
     document.querySelector('#gameOverOne').classList.remove('hidden');
+    gameOverOneMusic.play();
     typingGameOverOne();
     // typingGameOver(goOneText, goOneExplain, thisWordOne);
   }
@@ -144,9 +147,11 @@ let modalCount = 0;
 function success(count) {
   if (count >= 3 && modalCount == 0) {
     $('#goodModalOne').modal('show');
+    successTone.play();
     modalCount++;
   } else if (count >= 6 && modalCount == 1) {
     $('#goodModalTwo').modal('show');
+    successTone.play();
     modalCount++;
   } else if (count >= 9 && modalCount == 2) {
     document.querySelector('#gameOverTwo').classList.remove('hidden');
