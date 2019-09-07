@@ -160,7 +160,7 @@ a:hover{
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(88, 105, 93, 0.158);
+  background: rgba(88, 105, 93, 0.103);
   opacity: 0;
   z-index: 500000;
   pointer-events: none;
