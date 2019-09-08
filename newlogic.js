@@ -91,18 +91,24 @@ function rateHandler(rate) {
   } else if (rate == 1) {
     failedMeals++;
   } else if (rate == 3) {
-    starredMeals += .5;
+    starredMeals += 0.5;
     // threeStars++;
     // if(threeStars % 2 === 0){
     //   starredMeals++;
     // }
-  } else if(rate == 2){
-    failedMeals += .2;
+  } else if (rate == 2) {
+    failedMeals += 0.2;
     // twoStars++;
     // if(twoStars % 5 === 0){
     //   failedMeals++;
     // }
   }
+}
+
+function getRating(rate){
+  let ratingArrIndex = shuffleArray(ratingJustifications)[0];
+  let reasonText = document.querySelector("#reason > h6");
+  reasonText.innerHTML = ratingArrIndex[rate];
 }
 
 function makeMeal() {
@@ -125,6 +131,7 @@ function makeMeal() {
   dubious.src = dubiousUrl;
   let src = document.querySelector("#myModal > div > div > div.meal-image");
   src.innerHTML = `<img class="dubious" src=${dubiousUrl} />`;
+  getRating(selectedRate);
   generateStars(mealRate, selectedRate);
 }
 
@@ -136,9 +143,9 @@ function generateStars(element, amount) {
 
 function failure(count) {
   if (count >= 5) {
-    document.querySelector('#gameOverOne').classList.remove('hidden');
-    gameOverOneMusic.play();
+    document.querySelector("#gameOverOne").classList.remove("hidden");
     typingGameOverOne();
+    gameOverOneMusic.play();
     // typingGameOver(goOneText, goOneExplain, thisWordOne);
   }
 }
@@ -146,16 +153,17 @@ function failure(count) {
 let modalCount = 0;
 function success(count) {
   if (count >= 3 && modalCount == 0) {
-    $('#goodModalOne').modal('show');
+    $("#goodModalOne").modal("show");
     successTone.play();
     modalCount++;
   } else if (count >= 6 && modalCount == 1) {
-    $('#goodModalTwo').modal('show');
+    $("#goodModalTwo").modal("show");
     successTone.play();
     modalCount++;
   } else if (count >= 9 && modalCount == 2) {
-    document.querySelector('#gameOverTwo').classList.remove('hidden');
+    document.querySelector("#gameOverTwo").classList.remove("hidden");
     typingGameOverTwo();
+    gameOverTwoMusic.play();
     // typingGameOver(goTwoText, goTwoExplain, thisWordTwo);
   }
 }
@@ -163,9 +171,9 @@ function success(count) {
 let nextButton = document.getElementById("next");
 nextButton.addEventListener("click", update);
 
-$('.retry-link').click(function(){
+$(".retry-link").click(function() {
   location.reload();
-})
+});
 
 $(".enter_link").click(function() {
   $(this)
@@ -200,41 +208,37 @@ let m = 0;
 let thisWordOne = goOneText[m];
 let thisWordTwo = goTwoText[m];
 
-function typingGameOverOne(){
+function typingGameOverOne() {
   if (n < thisWordOne.length) {
     goOneExplain.innerHTML += thisWordOne[n];
     n++;
-    setTimeout(typingGameOverOne, 100);
+    setTimeout(typingGameOverOne, 50);
   } else if (n === thisWordOne.length) {
-    thisWordOne = goOneText[m+1];
+    thisWordOne = goOneText[m + 1];
     n = 0;
     m++;
     goOneExplain.innerHTML += "<br>";
-    setTimeout(typingGameOverOne, 200);
+    setTimeout(typingGameOverOne, 50);
   }
   if (m == goOneText.length) {
-    document
-      .querySelector(".retry-link")
-      .classList.remove("hidden");
+    document.querySelector(".retry-link").classList.remove("hidden");
   }
 }
 
-function typingGameOverTwo(){
+function typingGameOverTwo() {
   if (n < thisWordTwo.length) {
     goTwoExplain.innerHTML += thisWordTwo[n];
     n++;
-    setTimeout(typingGameOverTwo, 1000);
+    setTimeout(typingGameOverTwo, 40);
   } else if (n === thisWordTwo.length) {
-    thisWordTwo = goTwoText[m+1];
+    thisWordTwo = goTwoText[m + 1];
     n = 0;
     m++;
     goTwoExplain.innerHTML += "<br>";
-    setTimeout(typingGameOverTwo, 1000);
+    setTimeout(typingGameOverTwo, 40);
   }
   if (m == goTwoText.length) {
-    document
-      .querySelector(".retry-link")
-      .classList.remove("hidden");
+    document.querySelector("#gameOverTwo > a").classList.remove("hidden");
   }
 }
 
@@ -262,6 +266,21 @@ function destroyFast(container) {
 
 let modalButton = document.querySelector("#thing");
 
+function modalPop() {
+  if (
+    selectedIngredientA.rate + selectedIngredientB.rate == 4 ||
+    selectedIngredientA.rate + selectedIngredientB.rate == 5
+  ) {
+    goodTone.play();
+  } else if (selectedIngredientA.rate + selectedIngredientB.rate == 1) {
+    failTone.play();
+  } else if(selectedIngredientA.rate + selectedIngredientB.rate == 3){
+    mealThreeTone.play();
+  } else mealTwoTone.play();
+}
+
+modalButton.addEventListener("click", modalPop);
+
 function replace() {
   if (modalButton.className.includes("invisible")) {
     modalButton.className = "visible btn btn-primary";
@@ -280,12 +299,12 @@ function update() {
   init();
 }
 
-function scoreBoard(){
-  let scores = document.getElementById('scores');
+function scoreBoard() {
+  let scores = document.getElementById("scores");
   scores.innerHTML = `
   <p>Successful Dishes: ${starredMeals.toFixed(1)}</p>
   <p>Failed Dishes: ${failedMeals.toFixed(1)}</p>
-  `
+  `;
 }
 
 window.onload = start;

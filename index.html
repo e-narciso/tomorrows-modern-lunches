@@ -20,159 +20,171 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-      <!-- <input type="checkbox" id="switch" checked>
-      <label for="switch" class="switch-label">Turn </label> -->
-      
-      <div class="container crt">
- 
+    <input type="checkbox" id="switch" checked />
+    <label for="switch" class="switch-label">Turn </label>
 
-    <div class="fullscreen" id="splashscreen">
-      <h2>Tomorrow's Modern Lunches<br />Welcomes You</h2>
-      <p class="splashtext"></p>
-      <a href="#" class="enter_link blinker">JOB START</a>
-    </div>
-    <div class="gameboard">
-      <h2 class="d-flex justify-content-center">Tomorrow's Modern Lunches</h2>
-      <img
-        class="robot"
-        src="./resources/PinClipart.com_robot-arm-clip-art_2017540.png"
-      />
-      <div class="boxes">
-        <div class="row justify-content-around text-center">
-          <div class="col-sm-2 left ingredient" id="ingredient1">
-            One of two columns
+    <div class="container crt">
+      <div class="fullscreen" id="splashscreen">
+        <h2>Tomorrow's Modern Lunches<br />Welcomes You</h2>
+        <p class="splashtext"></p>
+        <a href="#" class="enter_link blinker">JOB START</a>
+      </div>
+      <div class="gameboard">
+        <h2 class="d-flex justify-content-center">Tomorrow's Modern Lunches</h2>
+        <img
+          class="robot"
+          src="./resources/PinClipart.com_robot-arm-clip-art_2017540.png"
+        />
+        <div class="boxes">
+          <div class="row justify-content-around text-center">
+            <div class="col-sm-2 left ingredient" id="ingredient1">
+              One of two columns
+            </div>
+            <div class="col-sm-2 right ingredient" id="ingredient5">
+              One of two columns
+            </div>
           </div>
-          <div class="col-sm-2 right ingredient" id="ingredient5">
-            One of two columns
+          <div class="row justify-content-around text-center">
+            <div class="col-sm-2 left ingredient" id="ingredient2">
+              One of two columns
+            </div>
+            <div class="col-sm-2 right ingredient" id="ingredient6">
+              One of two columns
+            </div>
           </div>
-        </div>
-        <div class="row justify-content-around text-center">
-          <div class="col-sm-2 left ingredient" id="ingredient2">
-            One of two columns
+          <div class="row justify-content-around text-center">
+            <div class="col-sm-2 left ingredient" id="ingredient3">
+              One of two columns
+            </div>
+            <div class="col-sm-2 right ingredient" id="ingredient7">
+              One of two columns
+            </div>
           </div>
-          <div class="col-sm-2 right ingredient" id="ingredient6">
-            One of two columns
-          </div>
-        </div>
-        <div class="row justify-content-around text-center">
-          <div class="col-sm-2 left ingredient" id="ingredient3">
-            One of two columns
-          </div>
-          <div class="col-sm-2 right ingredient" id="ingredient7">
-            One of two columns
-          </div>
-        </div>
-        <div class="row justify-content-around text-center">
-          <div class="col-sm-2 left ingredient" id="ingredient4">
-            One of two columns
-          </div>
-          <div class="col-sm-2 right ingredient" id="ingredient8">
-            One of two columns
+          <div class="row justify-content-around text-center">
+            <div class="col-sm-2 left ingredient" id="ingredient4">
+              One of two columns
+            </div>
+            <div class="col-sm-2 right ingredient" id="ingredient8">
+              One of two columns
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Button to Open the Modal -->
-    <div class="wrapper">
-      <div class="row">
-        <div class="col text-center">
-          <button
-            type="button"
-            class="btn btn-primary invisible"
-            data-toggle="modal"
-            data-backdrop="static"
-            data-target="#myModal"
-            id="thing"
-          >
-            MAKE MEAL
-          </button>
-        </div>
-      </div>
-    </div>
-    <div id="scores"></div>
-
-    <!-- The Modal -->
-
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <h5 class="modal-title text-center" id="exampleModalLongTitle"></h5>
-          <div class="meal-image"></div>
-          <div id="reason">
-            <h6>"I almost can't remember what <i>'food'</i> tasted like"</h6>
-          </div>
-          <div class="modal-body text-center" id="rating"></div>
-          <div class="modal-footer justify-content-around">
-            <button id="next" type="button" class="btn btn-primary">
-              NEXT ROUND
+      <!-- Button to Open the Modal -->
+      <div class="wrapper">
+        <div class="row">
+          <div class="col text-center">
+            <button
+              type="button"
+              class="btn btn-primary invisible"
+              data-toggle="modal"
+              data-backdrop="static"
+              data-target="#myModal"
+              id="thing"
+            >
+              MAKE MEAL
             </button>
           </div>
         </div>
       </div>
-    </div>
+      <div id="scores"></div>
 
-    <div class="modal fade" id="goodModalOne">
-      <div
-        class="modal-dialog modal-dialog-centered modal-lg series"
-        role="document"
-      >
-        <div class="modal-content">
-          <h3 class="modal-title text-center">Series A Round Successful</h3>
-          <div class="funded">
-            <h6 class="text-justify">
-              Congratulations! Thanks to your hard work and quick thinking,
-              Tomorrow's Modern Lunches Co. has applied for and received its
-              Series A funding! Noted venture capital firm Howitzer Bresna, best
-              known for the child backpack Kevlar insert and the Snuggie, has
-              invested $10m toward expansion and distribution of our "machine
-              learning algorithm". Better get back to work, this Intelligence
-              won't Artificial itself!
-            </h6>
-          </div>
-          <div class="modal-footer justify-content-around">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">
-              CLOSE
-            </button>
+      <!-- The Modal -->
+
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <h5 class="modal-title text-center" id="exampleModalLongTitle"></h5>
+            <div class="meal-image"></div>
+            <div id="reason">
+              <h6></h6>
+            </div>
+            <div class="modal-body text-center" id="rating"></div>
+            <div class="modal-footer justify-content-around">
+              <button id="next" type="button" class="btn btn-primary">
+                NEXT ROUND
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="modal fade" id="goodModalTwo">
-      <div
-        class="modal-dialog modal-dialog-centered modal-lg series"
-        role="document"
-      >
-        <div class="modal-content">
-          <h3 class="modal-title text-center">Series B Round Successful</h3>
-          <div class="funded">
-            <h6 class="text-justify">
-              WOW!!! Way to go!! Tomorrow's Modern Lunches Co. just received an offer of $150m from internationally-recognized VC firm Arc Capital, one of the earliest investors in the private prison industry! With this money, it's possible we might actually get a high enough valuation we won't even need a real algorithm, which should be a relief for you since you have a printmaking degree and we only gave you eight buttons. We're so close!
-            </h6>
-          </div>
-          <div class="modal-footer justify-content-around">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">
-              CLOSE
-            </button>
+      <div class="modal fade" id="goodModalOne">
+        <div
+          class="modal-dialog modal-dialog-centered modal-lg series"
+          role="document"
+        >
+          <div class="modal-content">
+            <h3 class="modal-title text-center">Series A Round Successful</h3>
+            <div class="funded">
+              <h6 class="text-justify">
+                Congratulations! Thanks to your hard work and quick thinking,
+                Tomorrow's Modern Lunches Co. has applied for and received its
+                Series A funding! Noted venture capital firm Howitzer Bresna,
+                best known for the child backpack Kevlar insert and the Snuggie,
+                has invested $10m toward expansion and distribution of our
+                "machine learning algorithm". Better get back to work, this
+                Intelligence won't Artificial itself!
+              </h6>
+            </div>
+            <div class="modal-footer justify-content-around">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+              >
+                CLOSE
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="fullscreen hidden" id="gameOverOne">
-      <h2>Game Over</h2>
-      <img class="island" src="./resources/island.jpg" />
-      <p class="gameOverOneText"></p>
-      <a href="#" class="retry-link blinker hidden">TRY AGAIN</a>
-    </div>
+      <div class="modal fade" id="goodModalTwo">
+        <div
+          class="modal-dialog modal-dialog-centered modal-lg series"
+          role="document"
+        >
+          <div class="modal-content">
+            <h3 class="modal-title text-center">Series B Round Successful</h3>
+            <div class="funded">
+              <h6 class="text-justify">
+                WOW!!! Way to go!! Tomorrow's Modern Lunches Co. just received
+                an offer of $150m from internationally-recognized VC firm Arc
+                Capital, one of the earliest investors in the private prison
+                industry! With this money, it's possible we might actually get a
+                high enough valuation we won't even need a real algorithm, which
+                should be a relief for you since you have a printmaking degree
+                and we only gave you eight buttons. We're so close!
+              </h6>
+            </div>
+            <div class="modal-footer justify-content-around">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="fullscreen hidden" id="gameOverTwo">
-      <h2>Game Over</h2>
-      <img class="sf" src="./resources/sf.jpg" />
-      <p class="gameOverTwoText"></p>
-      <a href="#" class="retry-link blinker hidden">TRY AGAIN</a>
+      <div class="fullscreen hidden" id="gameOverOne">
+        <h2>Game Over</h2>
+        <img class="island" src="./resources/island.jpg" />
+        <p class="gameOverOneText"></p>
+        <a href="#" class="retry-link blinker hidden">TRY AGAIN</a>
+      </div>
+
+      <div class="fullscreen hidden" id="gameOverTwo">
+        <h2>Game Over</h2>
+        <img class="sf" src="./resources/sf.jpg" />
+        <p class="gameOverTwoText"></p>
+        <a href="#" class="retry-link blinker hidden">TRY AGAIN</a>
+      </div>
     </div>
-  </div>
     <script src="./arrays.js" async defer></script>
     <script src="./newlogic.js" async defer></script>
   </body>
