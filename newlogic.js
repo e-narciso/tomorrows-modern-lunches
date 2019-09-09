@@ -253,6 +253,7 @@ function init() {
 }
 
 function start() {
+  // welcomeTone.play();
   typeWriter();
   init();
 }
@@ -306,5 +307,13 @@ function scoreBoard() {
   <p>Failed Dishes: ${failedMeals.toFixed(1)}</p>
   `;
 }
+
+let skipButton = document.getElementById('skip');
+function skip(){
+  document.querySelector("#splashscreen").classList.add('hidden');
+  skipButton.classList.add('hidden');
+}
+
+skipButton.addEventListener('click', skip);
 
 window.onload = start;

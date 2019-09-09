@@ -520,3 +520,15 @@ h6 {
   border-color: rgb(66, 112, 57) !important;
   box-shadow: 0 0 0 0.2rem rgba(212, 255, 156, 0.425) !important;
 }
+
+#skip{
+  position: absolute;
+  cursor: pointer;
+  bottom: 5%;
+  left: 44%;
+  border-radius: 10px;
+  background: #003321;
+  color: white;
+  font-size: 10px;
+  opacity: 0.3;
+}

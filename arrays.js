@@ -239,6 +239,7 @@ let goodTone = new Audio("./resources/05_Stage Clear.mp3");
 let failTone = new Audio("./resources/57 - Kozue Ishikawa - Revelation.mp3");
 let mealThreeTone = new Audio("./resources/51_Level Up Fanfare.mp3");
 let mealTwoTone = new Audio('./resources/02_Pipe Dream.mp3');
+let welcomeTone = new Audio('./resources/stolen.m4a');
 
 let ratingJustifications = [
   {
