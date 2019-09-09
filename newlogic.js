@@ -179,6 +179,7 @@ $(".enter_link").click(function() {
   $(this)
     .parent("#splashscreen")
     .fadeOut(500);
+    welcomeTone.pause();
 });
 
 let i = 0;
@@ -253,7 +254,7 @@ function init() {
 }
 
 function start() {
-  // welcomeTone.play();
+  welcomeTone.play();
   typeWriter();
   init();
 }
@@ -312,6 +313,7 @@ let skipButton = document.getElementById('skip');
 function skip(){
   document.querySelector("#splashscreen").classList.add('hidden');
   skipButton.classList.add('hidden');
+  welcomeTone.pause();
 }
 
 skipButton.addEventListener('click', skip);
