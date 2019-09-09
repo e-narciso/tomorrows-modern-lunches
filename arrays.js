@@ -224,9 +224,9 @@ let goOneText = [
   `Start-ups come and go, and this one probably should stay gone anyway. I'd keep this whole ordeal off your LinkedIn, to be perfectly honest.`
 ];
 let goTwoText = [
-  // `So listen. Tomorrow's Modern Lunches just got acquired by Yelp for $850m. That's the good news.`,
-  // `The bad news is, they don't actually care about the robot, or even the meals? And they definitely don't care about you.`,
-  // `They just want the, uh, algorithms, and what the machine learned or whatever, look, we don't know anything about data, our dads were bankers, we went to Duke and majored in keg stands.`,
+  `So listen. Tomorrow's Modern Lunches just got acquired by Yelp for $850m. That's the good news.`,
+  `The bad news is, they don't actually care about the robot, or even the meals? And they definitely don't care about you.`,
+  `They just want the, uh, algorithms, and what the machine learned or whatever, look, we don't know anything about data, our dads were bankers, we went to Duke and majored in keg stands.`,
   `Anyway, you're not coming with us to the Bay. Yelp is sending some actual programmers over to try to figure out what you did right, cos hell if we know what you were doing at all.`,
   `At least you get to put this on your resume.`
 ];
